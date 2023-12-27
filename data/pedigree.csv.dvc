@@ -1,0 +1,5 @@
+outs:
+- md5: 9af52655c0db6d7ab39b658b2d2829a3
+  size: 6600227
+  hash: md5
+  path: pedigree.csv
