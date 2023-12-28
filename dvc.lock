@@ -93,12 +93,12 @@ stages:
     params:
       params.yaml:
         train.learning_rate: 0.05
-        train.max_depth: 1
+        train.max_depth: 3
     outs:
     - path: models/model.pickle
       hash: md5
-      md5: b2823acaaee4a5164e0e43642353f08d
-      size: 670242
+      md5: 1ef95fbbae7e692aa76ceb9d65703918
+      size: 1566583
   evaluate:
     cmd: python3 scripts/evaluate.py data/stage4/val_x.csv data/stage4/val_y.csv models/model.pickle
     deps:
@@ -112,8 +112,8 @@ stages:
       size: 1357620
     - path: models/model.pickle
       hash: md5
-      md5: b2823acaaee4a5164e0e43642353f08d
-      size: 670242
+      md5: 1ef95fbbae7e692aa76ceb9d65703918
+      size: 1566583
     - path: scripts/evaluate.py
       hash: md5
       md5: 3bcd958bf4ad17583ff98db218a8a44e
@@ -121,5 +121,5 @@ stages:
     outs:
     - path: evaluate/score.json
       hash: md5
-      md5: 7ffde3c4b11d6889973537510f94897f
+      md5: 67027a9115ed4cb0e71375e348972178
       size: 28
