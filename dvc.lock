@@ -9,8 +9,8 @@ stages:
       size: 15281110
     - path: scripts/clear_train.py
       hash: md5
-      md5: e0160feb671a900c872382da905e8eb4
-      size: 723
+      md5: 9ff5a4b3ac9cff77db44c40846c221ee
+      size: 684
     outs:
     - path: data/stage1
       hash: md5
@@ -43,8 +43,8 @@ stages:
       size: 24184704
     - path: scripts/split_on_x_y.py
       hash: md5
-      md5: dad1060e47867f2d11e77f492dd16eab
-      size: 1017
+      md5: 2f6c2dc55ab575d2eca0d576f01fb315
+      size: 978
     outs:
     - path: data/stage3
       hash: md5
@@ -64,15 +64,15 @@ stages:
       size: 6800899
     - path: scripts/data_split.py
       hash: md5
-      md5: 8a96812d960f9f574deafe29b3d9ddcf
-      size: 972
+      md5: a6df827ea35711d41998b7794c221af4
+      size: 952
     params:
       params.yaml:
         split.split_ratio: 0.2
     outs:
     - path: data/stage4
       hash: md5
-      md5: be9f29e7720a21f10f0353f3cd5b1245.dir
+      md5: 88b03957554b2e343b0170b4197d94fc.dir
       size: 23490332
       nfiles: 4
   train:
@@ -80,16 +80,16 @@ stages:
     deps:
     - path: data/stage4/train_y.csv
       hash: md5
-      md5: 3ad1215695f173c10c15d0cd99552016
-      size: 5439600
+      md5: a59c4836d672bebada34238bfcfb11d8
+      size: 5443400
     - path: data/stage4/train_y.csv
       hash: md5
-      md5: 3ad1215695f173c10c15d0cd99552016
-      size: 5439600
+      md5: a59c4836d672bebada34238bfcfb11d8
+      size: 5443400
     - path: scripts/model_learning.py
       hash: md5
-      md5: 6875a309b95a0f737d4865d95d5cb82f
-      size: 3398
+      md5: 55c5cd8ec5804fcb4182c5ea464eebf6
+      size: 3250
     params:
       params.yaml:
         train.learning_rate: 0.05
@@ -97,5 +97,29 @@ stages:
     outs:
     - path: models/model.pickle
       hash: md5
-      md5: c8d7525bde45e40de863703bd17960b8
+      md5: b2823acaaee4a5164e0e43642353f08d
       size: 670242
+  evaluate:
+    cmd: python3 scripts/evaluate.py data/stage4/val_x.csv data/stage4/val_y.csv models/model.pickle
+    deps:
+    - path: data/stage4/val_x.csv
+      hash: md5
+      md5: 01b66e4ff6a6bdcfb88ce1630d03ab1d
+      size: 3336329
+    - path: data/stage4/val_y.csv
+      hash: md5
+      md5: 1b043c9ac68ab2f17082d1fd5a174ebd
+      size: 1357620
+    - path: models/model.pickle
+      hash: md5
+      md5: b2823acaaee4a5164e0e43642353f08d
+      size: 670242
+    - path: scripts/evaluate.py
+      hash: md5
+      md5: 3bcd958bf4ad17583ff98db218a8a44e
+      size: 3006
+    outs:
+    - path: evaluate/score.json
+      hash: md5
+      md5: 7ffde3c4b11d6889973537510f94897f
+      size: 28

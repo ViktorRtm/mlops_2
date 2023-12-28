@@ -1,6 +1,4 @@
 import os
-import pandas as pd
-import numpy as np
 
 from loading_datasets import load_dataset, upload_dataset
 

@@ -6,10 +6,8 @@ from typing import Any
 from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, MinMaxScaler
-from sklearn.model_selection import train_test_split, cross_validate
-from sklearn.metrics import mean_squared_error
-from data_preparation import load_dataset, upload_dataset
+from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
+from data_preparation import load_dataset
 
 
 def fit() -> list[HistGradientBoostingRegressor]:

@@ -32,7 +32,7 @@ stages:
     - data/stage4
   train:
     cmd: python3 scripts/model_learning.py data/stage4/train_x.csv data/stage4/train_y.csv
-    deps: 
+    deps:
     - data/stage4/train_y.csv
     - data/stage4/train_y.csv
     - scripts/model_learning.py
@@ -41,3 +41,13 @@ stages:
     - train.max_depth
     outs:
     - models/model.pickle
+  evaluate:
+    cmd: python3 scripts/evaluate.py data/stage4/val_x.csv data/stage4/val_y.csv models/model.pickle
+    deps:
+    - data/stage4/val_x.csv
+    - data/stage4/val_y.csv
+    - models/model.pickle
+    - scripts/evaluate.py
+    metrics:
+    - evaluate/score.json:
+        cache: false

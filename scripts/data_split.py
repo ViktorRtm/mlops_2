@@ -1,7 +1,6 @@
 import yaml
 import os
 
-import pandas as pd
 from data_preparation import load_dataset, upload_dataset
 from sklearn.model_selection import train_test_split
 
