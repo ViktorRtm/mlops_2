@@ -2,3 +2,5 @@
 /train.csv
 /X_test_private.csv
 /y_test_private.csv
+/stage1
+/stage2

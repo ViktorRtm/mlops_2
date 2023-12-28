@@ -1,0 +1,36 @@
+schema: '2.0'
+stages:
+  clear_train:
+    cmd: python3 scripts/clear_train.py data/train.csv
+    deps:
+    - path: data/train.csv
+      hash: md5
+      md5: 8fcda6dddf3201d2c12f2ab8f1c3ccdf
+      size: 15281110
+    - path: scripts/clear_train.py
+      hash: md5
+      md5: 290dbd14008c251e0c840b0a681beb48
+      size: 1025
+    outs:
+    - path: data/stage1
+      hash: md5
+      md5: b4115c5d113432bee6777cec80566b4b.dir
+      size: 18131513
+      nfiles: 1
+  data_preparation:
+    cmd: python3 scripts/data_preparation.py data/stage1/train.csv
+    deps:
+    - path: data/stage1/train.csv
+      hash: md5
+      md5: aa3be03110fc5780f866ed550dee48fd
+      size: 18131513
+    - path: scripts/data_preparation.py
+      hash: md5
+      md5: ff5cd5e58f679161bbce9f8ac1883c77
+      size: 2080
+    outs:
+    - path: data/stage2
+      hash: md5
+      md5: 9c54de33b2db1bb284f2d906830f4b87.dir
+      size: 24184704
+      nfiles: 1

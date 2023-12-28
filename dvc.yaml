@@ -1,0 +1,15 @@
+stages:
+  clear_train:
+    cmd: python3 scripts/clear_train.py data/train.csv
+    deps:
+    - data/train.csv
+    - scripts/clear_train.py
+    outs:
+    - data/stage1
+  data_preparation:
+    cmd: python3 scripts/data_preparation.py data/stage1/train.csv
+    deps:
+    - data/stage1/train.csv
+    - scripts/data_preparation.py
+    outs:
+    - data/stage2
