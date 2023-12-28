@@ -30,3 +30,14 @@ stages:
     - split.split_ratio
     outs:
     - data/stage4
+  train:
+    cmd: python3 scripts/model_learning.py data/stage4/train_x.csv data/stage4/train_y.csv
+    deps: 
+    - data/stage4/train_y.csv
+    - data/stage4/train_y.csv
+    - scripts/model_learning.py
+    params:
+    - train.learning_rate
+    - train.max_depth
+    outs:
+    - models/model.pickle

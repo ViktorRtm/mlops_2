@@ -8,7 +8,6 @@ from sklearn.model_selection import train_test_split
 
 params = yaml.safe_load(open('params.yaml'))['split']
 
-
 in_x_path = os.path.join('data', 'stage3', 'train_x.csv')
 in_y_path = os.path.join('data', 'stage3', 'train_y.csv')
 out_train_x_path = os.path.join('data', 'stage4', 'train_x.csv')
