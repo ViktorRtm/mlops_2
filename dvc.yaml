@@ -20,3 +20,13 @@ stages:
     - scripts/split_on_x_y.py
     outs:
     - data/stage3
+  split:
+    cmd: python3 scripts/data_split.py data/stage3/train_x.csv data/stage3/train_y.csv
+    deps:
+    - data/stage3/train_x.csv
+    - data/stage3/train_y.csv
+    - scripts/data_split.py
+    params:
+    - split.split_ratio
+    outs:
+    - data/stage4
