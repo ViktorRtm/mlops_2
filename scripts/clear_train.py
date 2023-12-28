@@ -1,15 +1,9 @@
-import sys
 import os
 import pandas as pd
 import numpy as np
-import tqdm
 
 
 from loading_datasets import load_dataset, upload_dataset
-
-
-X_COLUMNS = ['animal_id','lactation', 'calving_date', 'farm', 'farmgroup', 'birth_date', 'milk_yield_1', 'milk_yield_2', 'mother_id']
-Y_COLUMNS = ['milk_yield_3', 'milk_yield_4', 'milk_yield_5', 'milk_yield_6', 'milk_yield_7', 'milk_yield_8', 'milk_yield_9', 'milk_yield_10']
 
 
 in_train_path = os.path.join('data', 'train.csv')

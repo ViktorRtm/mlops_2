@@ -9,8 +9,8 @@ stages:
       size: 15281110
     - path: scripts/clear_train.py
       hash: md5
-      md5: 290dbd14008c251e0c840b0a681beb48
-      size: 1025
+      md5: 71d45608c2c9f2d848a8a3df96a2f4e1
+      size: 724
     outs:
     - path: data/stage1
       hash: md5
@@ -26,11 +26,28 @@ stages:
       size: 18131513
     - path: scripts/data_preparation.py
       hash: md5
-      md5: ff5cd5e58f679161bbce9f8ac1883c77
-      size: 2080
+      md5: 33f0ceffc599e914ae9e98c7c55a136d
+      size: 1804
     outs:
     - path: data/stage2
       hash: md5
       md5: 9c54de33b2db1bb284f2d906830f4b87.dir
       size: 24184704
       nfiles: 1
+  split_on_x_y:
+    cmd: python3 scripts/split_on_x_y.py data/stage2/train.csv
+    deps:
+    - path: data/stage2/train.csv
+      hash: md5
+      md5: 459a8c5d6b2e25397228bc60e045d7e2
+      size: 24184704
+    - path: scripts/split_on_x_y.py
+      hash: md5
+      md5: d9a50ec193b7c33b9fdc029f8a536a38
+      size: 1077
+    outs:
+    - path: data/stage3
+      hash: md5
+      md5: 1eb7acfd0f7c371ebaf1fb0cf07c1dcd.dir
+      size: 23495453
+      nfiles: 2

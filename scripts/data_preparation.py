@@ -1,4 +1,3 @@
-import sys
 import os
 import pandas as pd
 import numpy as np
@@ -33,10 +32,6 @@ def data_preparation(X_df: pd.DataFrame, X_meta_df: pd.DataFrame) -> pd.DataFram
         X_df.loc[X_df[item].isna(), item] = 0
 
     return X_df
-
-
-X_COLUMNS = ['animal_id','lactation', 'calving_date', 'farm', 'farmgroup', 'birth_date', 'milk_yield_1', 'milk_yield_2']
-Y_COLUMNS = ['milk_yield_3', 'milk_yield_4', 'milk_yield_5', 'milk_yield_6', 'milk_yield_7', 'milk_yield_8', 'milk_yield_9', 'milk_yield_10']
 
 
 in_train_path = os.path.join('data', 'stage1', 'train.csv')
